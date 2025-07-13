@@ -1,0 +1,35 @@
+{
+  "name": "rinha-backend-2025-node",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts,.tsx",
+    "start": "tsx src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@eslint/json": "^0.13.0",
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.36.0"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "bullmq": "^5.56.4",
+    "dotenv": "^17.2.0",
+    "fastify": "^5.4.0",
+    "opossum": "^9.0.0",
+    "redis": "^5.6.0"
+  }
+}
