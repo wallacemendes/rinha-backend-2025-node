@@ -1,14 +1,7 @@
-export interface PaymentRequest {
-  correlationId: string;
-  amount: number;
-}
+import { z } from 'zod';
+import { paymentRequestBodySchema, paymentSummarySchema } from './schemas.ts';
 
-export interface PaymentSummary {
-  default: ProcessorSummary;
-  fallback: ProcessorSummary;
-}
+type PaymentRequest = z.infer<typeof paymentRequestBodySchema>;
+type PaymentSummary = z.infer<typeof paymentSummarySchema>;
 
-interface ProcessorSummary {
-  totalRequests: number;
-  totalAmount: number;
-}
+export { PaymentRequest, PaymentSummary };
