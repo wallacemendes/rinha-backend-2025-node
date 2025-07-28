@@ -4,6 +4,9 @@ FROM node:22-alpine AS base
 # Install dumb-init for proper signal handling
 RUN apk add --no-cache dumb-init curl
 
+# Install tsx globally for TypeScript execution
+RUN npm install -g tsx
+
 # Create app directory
 WORKDIR /app
 
@@ -22,7 +25,7 @@ RUN npm ci --only=production --silent && npm cache clean --force
 FROM dev-dependencies AS development
 COPY . .
 USER node
-EXPOSE 3000
+EXPOSE 8080
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["npm", "run", "dev"]
 
@@ -35,16 +38,15 @@ COPY --from=prod-dependencies /app/node_modules ./node_modules
 # Copy source code
 COPY --chown=node:node . .
 
-# Create non-root user and switch to it
-RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
-USER nodejs
+# Switch to non-root user
+USER node
 
-# Expose port
-EXPOSE 3000
+# Expose port (will be overridden by environment variable)
+EXPOSE 8080
 
-# Add health check
+# Add health check with dynamic port
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/health || exit 1
+  CMD curl -f http://localhost:${API_PORT:-8080}/health || exit 1
 
 # Use dumb-init and start the application
 ENTRYPOINT ["dumb-init", "--"]

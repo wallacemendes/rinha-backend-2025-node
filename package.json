@@ -6,8 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "tsx src/api/server.ts",
-    "dev": "tsx watch src/api/server.ts",
-    "worker": "tsx src/workers/paymentWorker.ts"
+    "dev": "tsx watch src/api/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +16,7 @@
     "@eslint/js": "^9.31.0",
     "@eslint/json": "^0.13.0",
     "@types/node": "^24.0.13",
+    "@types/opossum": "^8.1.9",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "eslint": "^9.31.0",
