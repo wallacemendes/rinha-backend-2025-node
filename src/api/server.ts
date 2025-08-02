@@ -16,6 +16,8 @@ import { clearAllPayments, getPayments } from '../services/reportService.ts';
 
 const app = Fastify({
   logger: false,
+  trustProxy: true,
+  keepAliveTimeout: 60000,
 }).withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);

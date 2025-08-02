@@ -5,6 +5,9 @@ import redisConnection from './redis.ts';
 
 const paymentQueue = new Queue<PaymentRequest>('paymentQueue', {
   connection: redisConnection,
+  defaultJobOptions: {
+    removeOnComplete: true,
+  },
 });
 
 export default paymentQueue;
