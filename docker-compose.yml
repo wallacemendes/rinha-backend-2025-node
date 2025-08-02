@@ -23,9 +23,7 @@ services:
 
   # API Instance 1
   api1: &api
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: wallacemendes/rinha-backend-2025-node:latest
     hostname: api1
     container_name: rinha-api1
     environment:
